@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mumiviewer</title>
+
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+      }
+
+      iframe {
+        position: absolute;
+        transform-origin: left;
+        transform: scaleX(-1) translate(-100%);
+        right: 0;
+        width: calc(151vh * 1.78);
+        height: 151vh;
+        top: -43vh;
+      }
+
+      main {
+        height: 100vh;
+        width: 178vh;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: calc(50% - 89vh);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/T6DqZ6vCL9E" frameborder="0"></iframe>
+    </main>
+  </body>
+</html>
