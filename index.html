@@ -5,14 +5,11 @@
 
     <style>
       body {
-        overflow: hidden;
         margin: 0;
-        width: 100vw;
-        height: 100vh;
         background-color: black;
       }
 
-      iframe {
+      main.view iframe {
         position: absolute;
         transform-origin: left;
         transform: scaleX(-1) translate(-100%);
@@ -22,7 +19,7 @@
         top: -43vh;
       }
 
-      main {
+      main.view {
         height: 100vh;
         width: 178vh;
         overflow: hidden;
@@ -31,10 +28,25 @@
         left: calc(50% - 89vh);
       }
     </style>
+
+    <script>
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          var el = document.getElementById('el')
+
+          if (el.classList.contains('view')) {
+            el.classList.remove('view')
+          } else {
+            el.classList.add('view')
+          }
+        }
+      });
+    </script>
   </head>
 
   <body>
-    <main>
+    <main id="el">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/T6DqZ6vCL9E" frameborder="0"></iframe>
     </main>
   </body>
