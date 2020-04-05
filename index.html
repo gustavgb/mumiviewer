@@ -27,6 +27,23 @@
         top: 0;
         left: calc(50% - 89vh);
       }
+
+      main.view button {
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+
+      main.view button:hover {
+        opacity: 1;
+      }
+
+      button {
+        display: block;
+        padding: 20px 30px;
+      }
     </style>
 
     <script>
@@ -43,23 +60,34 @@
         }
       }
 
-      window.addEventListener('keydown', function (e) {
+      function closeFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+
+      function toggleFullscreen () {
         var el = document.getElementById('el')
-        if (e.key === 'Enter') {
-          if (el.classList.contains('view')) {
-            el.classList.remove('view')
-          } else {
-            el.classList.add('view')
-          }
-        } else if (e.key === 'f') {
+        if (el.classList.contains('view')) {
+          el.classList.remove('view')
+          closeFullscreen()
+        } else {
+          el.classList.add('view')
           openFullscreen(el)
         }
-      });
+      }
     </script>
   </head>
 
   <body>
     <main id="el">
+      <button onclick="toggleFullscreen()">Toggle Fullscreen</button>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/T6DqZ6vCL9E" frameborder="0"></iframe>
     </main>
   </body>
