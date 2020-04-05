@@ -31,15 +31,28 @@
 
     <script>
 
-      window.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          var el = document.getElementById('el')
+      function openFullscreen(elem) {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+        }
+      }
 
+      window.addEventListener('keydown', function (e) {
+        var el = document.getElementById('el')
+        if (e.key === 'Enter') {
           if (el.classList.contains('view')) {
             el.classList.remove('view')
           } else {
             el.classList.add('view')
           }
+        } else if (e.key === 'f') {
+          openFullscreen(el)
         }
       });
     </script>
